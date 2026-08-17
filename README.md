@@ -17,6 +17,7 @@ the legends who made them famous. Built with **Next.js 16**, **PostgreSQL**, and
 | ------ | -------------------- | ------------------------------------ |
 | GET    | `/api/moves`         | List, search, and filter moves       |
 | POST   | `/api/moves`         | Add a new move                       |
+| GET    | `/api/moves/names`   | List just the move names             |
 | GET    | `/api/moves/:slug`   | Fetch a single move by slug          |
 | DELETE | `/api/moves/:slug`   | Remove a move                        |
 | GET    | `/api/health`        | Health check (verifies DB connection)|

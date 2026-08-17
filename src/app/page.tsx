@@ -255,6 +255,25 @@ GET /api/moves/stone-cold-stunner`}
               </pre>
             </div>
 
+            {/* GET names */}
+            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
+              <div className="flex items-center gap-2">
+                <span className="rounded-md bg-emerald-500/15 px-2 py-0.5 text-[11px] font-black tracking-wider text-emerald-400 ring-1 ring-emerald-500/30">
+                  GET
+                </span>
+                <code className="text-sm font-semibold text-white">/api/moves/names</code>
+              </div>
+              <p className="mt-2 text-xs leading-relaxed text-zinc-400">
+                Just the move names — a lightweight list for autocomplete and dropdowns.
+              </p>
+              <pre className="mt-3 overflow-x-auto rounded-lg bg-black/60 p-3 text-[11px] leading-relaxed text-zinc-400">
+{`GET /api/moves/names
+→ { "count": 12,
+    "names": ["Chokeslam", "DDT",
+              "German Suplex", …] }`}
+              </pre>
+            </div>
+
             {/* POST */}
             <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
               <div className="flex items-center gap-2">
