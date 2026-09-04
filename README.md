@@ -22,8 +22,37 @@ the legends who made them famous. Built with **Next.js 16**, **PostgreSQL**, and
 | DELETE | `/api/moves/:slug`   | Remove a move                        |
 | GET    | `/api/health`        | Health check (verifies DB connection)|
 
-The database is auto-seeded on first request, so the site is usable immediately
-after the schema is created.
+## Seeding
+
+`npm run db:push` only creates the **schema** (`src/db/schema.ts`). The **rows**
+live in `src/db/seed.ts` — the full catalog of 119 moves (19 curated starters
+plus the 100-move extended catalog) as typed `NewWrestlingMove[]` data — and are
+written by `ensureSeeded()`, which every page and API route calls:
+
+- an empty database gets the whole catalog on the first request;
+- a database seeded earlier is **back-filled** with any slug that is missing, so
+  adding a move to `seed.ts` (or shipping a bigger catalog later) is enough to
+  propagate it to already-running deployments;
+- once the catalog is fully present the call is a no-op (a single `count(*)`).
+
+No import step is needed after `db:push`. `moves-100.json` is kept for the
+optional importer below and for ad-hoc `POST /api/moves` payloads.
+
+## Importing moves from JSON (optional)
+
+`import-moves.mjs` bulk-loads a JSON array through the live API — handy if you
+edit `moves-100.json` and want those changes in a database that is already
+running (moves already present are skipped, so re-runs are safe):
+
+```bash
+npm run dev                                   # in another terminal; needs a reachable DATABASE_URL
+node import-moves.mjs                         # → http://localhost:3000 with moves-100.json
+node import-moves.mjs https://your-app.railway.app  # against a deployed instance
+node import-moves.mjs --file 100-moves.json   # a differently-named catalog file
+```
+
+The script pings `/api/health` first and tells you to start the app if it cannot
+reach the API, rather than dying mid-import.
 
 ## Local development
 
@@ -45,6 +74,9 @@ after the schema is created.
    ```bash
    npm run db:push
    ```
+
+   The move catalog itself is seeded from `src/db/seed.ts` on the first request
+   (see [Seeding](#seeding)) — nothing else to run.
 
 4. Run the dev server:
 
