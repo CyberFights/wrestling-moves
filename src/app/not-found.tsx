@@ -9,7 +9,7 @@ export default function NotFound() {
           Move not found
         </h1>
         <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-zinc-400">
-          This move isn&apos;t in the database. It may have been deleted, or the slug is wrong.
+          This move isn&apos;t in the database. The slug may be wrong.
           Check the index or search for something else.
         </p>
         <Link

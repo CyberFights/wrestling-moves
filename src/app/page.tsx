@@ -203,7 +203,7 @@ export default async function HomePage({
                 REST <span className="text-red-500">API</span>
               </h2>
               <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-                The entire database is served over JSON. Read, search, create, and delete moves from any
+                The entire database is served over JSON. Read, search, and create moves from any
                 client.
               </p>
             </div>
@@ -296,25 +296,6 @@ GET /api/moves/stone-cold-stunner`}
        "famousUsers":["Tatsumi Fujinami"]}'`}
               </pre>
             </div>
-
-            {/* DELETE */}
-            <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-              <div className="flex items-center gap-2">
-                <span className="rounded-md bg-red-500/15 px-2 py-0.5 text-[11px] font-black tracking-wider text-red-400 ring-1 ring-red-500/30">
-                  DELETE
-                </span>
-                <code className="text-sm font-semibold text-white">/api/moves/:slug</code>
-              </div>
-              <p className="mt-2 text-xs leading-relaxed text-zinc-400">
-                Remove a move from the database.
-              </p>
-              <pre className="mt-3 overflow-x-auto rounded-lg bg-black/60 p-3 text-[11px] leading-relaxed text-zinc-400">
-{`curl -X DELETE /api/moves/dragon-suplex
-→ { "deleted": true,
-    "move": { "slug": "dragon-suplex",
-              "name": "Dragon Suplex" } }`}
-              </pre>
-            </div>
           </div>
 
           {/* Example response */}
@@ -363,7 +344,6 @@ GET /api/moves/stone-cold-stunner`}
                   "Name and description are required — everything else is optional.",
                   "Leave the image URL empty to get a category default photo.",
                   "Duplicate names get an auto-suffixed slug like “ddt-2”.",
-                  "Every move gets a DELETE button on its detail page.",
                 ].map((tip) => (
                   <li key={tip} className="flex gap-3">
                     <span className="mt-0.5 text-red-500">✦</span>
