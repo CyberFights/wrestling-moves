@@ -7,7 +7,6 @@ import { ensureSeeded } from "@/db/seed";
 import { CATEGORY_STYLE, DIFFICULTY_STYLE, toMoveJson } from "@/lib/moves";
 import MoveCard from "@/components/move-card";
 import MoveImage from "@/components/move-image";
-import DeleteMoveButton from "@/components/delete-move-button";
 
 export const dynamic = "force-dynamic";
 
@@ -127,10 +126,6 @@ export default async function MovePage({
                 </div>
               </div>
             )}
-
-            <div className="mt-auto pt-8">
-              <DeleteMoveButton slug={move.slug} name={move.name} />
-            </div>
           </div>
         </div>
 
